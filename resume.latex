@@ -88,12 +88,13 @@
   {Software Engineer 2}{Gurugram, India}
   \resumeItemListStart
     \resumeItem{Designed \textbf{Internal Developer Portal} backend in Go with service discovery APIs, \textbf{topological sort} for dependency graph resolution, and health aggregation serving \textbf{200+ engineers} with under \textbf{100ms P99 latency}.}
+    \resumeItem{Contributed to \textbf{multi-cloud migration} of 1,000+ microservices from GCP to Tencent Cloud — one of the largest cloud relocations in Southeast Asia — ensuring zero-downtime cutover and data sovereignty compliance.}
     \resumeItem{Built \textbf{semantic search system} using OpenAI embeddings stored in vector DB, implementing RAG pipeline with chunking, context retrieval, and re-ranking achieving \textbf{85\% query accuracy} on internal docs.}
     \resumeItem{Developed \textbf{certificate management service} with async job scheduler using priority queues, exponential backoff retries, and finite state machine tracking 500+ certificates with \textbf{99.9\% renewal success rate}.}
-    \resumeItem{Implemented \textbf{OAuth 2.0/OIDC authentication layer} with JWT validation, RBAC policies, and token introspection, reducing auth-related incidents by \textbf{80\%}.}
-    \resumeItem{Built \textbf{real-time metrics aggregation} service consuming events from Kafka, computing service health scores, and exposing Prometheus endpoints for \textbf{500+ microservices}.}
-    \resumeItem{\textbf{Led 2-week bootcamp} in Jakarta teaching distributed systems, API design patterns, and Go best practices to junior engineers.}
+    \resumeItem{\textbf{Delivered 2-week technical bootcamp} at Jakarta HQ for 20+ engineers, designing curriculum covering distributed systems, API design patterns, Go concurrency, and production debugging practices.}
   \resumeItemListEnd
+
+  \vspace{2pt}
 
   \resumeSubheading
   {MAQ Software}{Jul 2022 -- Aug 2024}
