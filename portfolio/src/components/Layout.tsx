@@ -9,25 +9,25 @@ type LayoutProps = {
   title?: string;
 };
 
-const Layout = ({ children, title = 'Ritik Chawla - Portfolio' }: LayoutProps) => {
+const Layout = ({ children, title = 'Ritik Chawla - Software Engineer' }: LayoutProps) => {
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative bg-white dark:bg-gray-950 transition-colors duration-300">
       <Head>
         <title>{title}</title>
-        <meta name="description" content="Ritik Chawla's professional portfolio" />
+        <meta name="description" content="Ritik Chawla - Software Engineer building distributed systems. Golang, Kubernetes, and cloud-native infrastructure." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </Head>
-      
+
+      {/* Particle Network Background */}
       <ParticleBackground />
-      
+
       <Navbar />
-      
-      <main className="container mx-auto px-4 pt-20 pb-12">
+
+      <main>
         {children}
       </main>
-      
+
       <Footer />
     </div>
   );

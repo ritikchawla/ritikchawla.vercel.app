@@ -1,0 +1,156 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{\item\small{{#1 \vspace{-2pt}}}}
+\newcommand{\resumeSubheading}[4]{\vspace{-2pt}\item
+  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    \textit{\small#3} & \textit{\small #4} \\
+  \end{tabular*}\vspace{-7pt}}
+\newcommand{\resumeProjectHeading}[2]{\item
+  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \small#1 & #2 \\
+  \end{tabular*}\vspace{-7pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\setlength{\footskip}{4.08003pt}
+
+\begin{document}
+% -------------------- HEADING--------------------
+\begin{flushright}
+  \color{gray}
+  \item
+\end{flushright}
+
+\vspace{-30pt}
+
+\begin{center}
+    \textbf{\Huge \scshape Ritik Chawla} \\ \vspace{8pt}
+    \small
+    \faIcon{envelope} \href{mailto:chawlaritik@gmail.com}{chawlaritik@gmail.com} $|$
+    \faIcon{phone} +91 8743844765 $|$
+    \faIcon{map-marker-alt} New Delhi, India \\ \vspace{4pt}
+    \faIcon{globe} \href{https://ritikchawla.vercel.app/}{ritikchawla.vercel.app} $|$ 
+    \faIcon{linkedin} \href{https://linkedin.com/in/ritikchawla}{linkedin.com/in/ritikchawla} $|$ 
+    \faIcon{github} \href{https://github.com/ritikchawla}{github.com/ritikchawla}
+\end{center}
+
+% -------------------- EXPERIENCE --------------------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+  \resumeSubheading
+  {GoTo Group (Gojek)}{Aug 2024 -- Present}
+  {Software Engineer 2 -- Engineering Platform}{Gurugram, India}
+  \resumeItemListStart
+    \resumeItem{Built \textbf{automated SSL certificate management} service handling 500+ certificates across VMs, Kubernetes clusters, and load balancers, reducing manual renewal effort by \textbf{90\%}.}
+    \resumeItem{Developed \textbf{Internal Developer Portal} serving 200+ engineers with service discovery, documentation, and infrastructure resource management, improving developer onboarding time by \textbf{40\%}.}
+    \resumeItem{Implemented \textbf{HashiCorp Vault} integrations for secrets management across 50+ services, enabling secure credential rotation and audit logging.}
+    \resumeItem{Built \textbf{AI-powered chatbots} for documentation search and anomaly detection, reducing support ticket volume by \textbf{30\%}.}
+    \resumeItem{Led migration of 15+ services from GCP to Tencent Cloud using \textbf{Terraform}, achieving zero-downtime cutover.}
+    \resumeItem{\textbf{Delivered 2-week DevOps bootcamp} at Jakarta HQ, training 20+ engineers on Linux, Docker, Kubernetes, Terraform, and GitOps.}
+  \resumeItemListEnd
+
+  \resumeSubheading
+  {MAQ Software}{Jul 2022 -- Aug 2024}
+  {Software Engineer}{Noida, India}
+  \resumeItemListStart
+    \resumeItem{Built data ingestion pipelines processing \textbf{500K+ records daily} from REST/GraphQL APIs into SQL Server and Azure Data Lake.}
+    \resumeItem{Implemented \textbf{Redis} caching layer reducing average API response time from 800ms to \textbf{240ms (70\% improvement)}.}
+    \resumeItem{Designed ETL workflows using \textbf{Databricks} and PySpark, cutting data processing time by \textbf{50\%}.}
+  \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+% -------------------- SKILLS --------------------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Golang, Python, C++, SQL} \\
+     \textbf{Backend}{: Microservices, gRPC, REST APIs, Event-Driven Architecture, Distributed Systems} \\
+     \textbf{Infrastructure}{: Kubernetes, Docker, Terraform, Vault, AWS, GCP, Kafka, Redis, PostgreSQL}
+    }}
+ \end{itemize}
+
+% -------------------- PROJECTS --------------------
+\section{Projects}
+  \resumeSubHeadingListStart
+
+\resumeProjectHeading
+{\textbf{\href{https://github.com/ritikchawla/minidb}{MiniDB: SQL Database Engine}} $|$ \footnotesize\emph{Golang}}{}
+\resumeItemListStart
+  \resumeItem{Built SQL database from scratch with \textbf{B+ tree} storage engine achieving O(log n) lookups and efficient range queries.}
+  \resumeItem{Implemented \textbf{MVCC transactions} with snapshot isolation for safe concurrent read/write operations.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{\href{https://github.com/ritikchawla/dns-server}{DNS Server from Scratch}} $|$ \footnotesize\emph{Golang}}{}
+\resumeItemListStart
+  \resumeItem{Built recursive DNS resolver implementing \textbf{RFC 1035} with A, AAAA, CNAME, MX record support.}
+  \resumeItem{Added response caching with TTL expiration and concurrent query handling via goroutines.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{\href{https://github.com/ritikchawla/kube-secrets-sync}{Kubernetes Secrets Controller}} $|$ \footnotesize\emph{Golang, Kubernetes, Vault}}{}
+\resumeItemListStart
+  \resumeItem{Built K8s controller syncing secrets from \textbf{HashiCorp Vault} with custom CRD and reconciliation loop.}
+  \resumeItem{Implemented secret rotation, TTL-based refresh, and automatic workload restarts on changes.}
+\resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+% -------------------- EDUCATION --------------------
+\section{Education}
+  \resumeSubHeadingListStart
+  
+    \resumeSubheading
+      {Guru Gobind Singh Indraprastha University}{Aug 2018 -- July 2022}
+      {Bachelor of Technology in Computer Science}{CGPA: 9.16/10.0}
+
+  \resumeSubHeadingListEnd
+
+\end{document}

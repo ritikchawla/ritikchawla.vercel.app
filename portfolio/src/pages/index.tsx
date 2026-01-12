@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
-import AboutSection from '../components/AboutSection';
+import StorySection from '../components/StorySection';
 import ExperienceSection from '../components/ExperienceSection';
 import SkillsSection from '../components/SkillsSection';
 import ProjectsSection from '../components/ProjectsSection';
@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <Layout>
       <HeroSection />
-      <AboutSection />
+      <StorySection />
       <ExperienceSection />
       <SkillsSection />
       <ProjectsSection />

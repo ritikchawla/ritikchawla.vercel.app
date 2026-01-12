@@ -1,81 +1,152 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiCode, FiDatabase, FiServer, FiCloud, FiLayers } from 'react-icons/fi';
 
 interface SkillCategory {
-  title: string;
-  icon: JSX.Element;
+  name: string;
   skills: string[];
+  color: string;
+  bgColor: string;
 }
 
 const skillCategories: SkillCategory[] = [
   {
-    title: 'Languages & Core',
-    icon: <FiCode className="text-primary" size={24} />,
-    skills: ['Golang', 'Python', 'C++', 'SQL', 'gRPC', 'Protocol Buffers', 'RESTful APIs']
+    name: 'Languages',
+    skills: ['Golang', 'Python', 'C++', 'SQL'],
+    color: 'from-indigo-500 to-blue-500',
+    bgColor: 'from-indigo-500/10 to-blue-500/10'
   },
   {
-    title: 'Distributed Systems',
-    icon: <FiLayers className="text-primary" size={24} />,
-    skills: ['Microservices', 'Event-Driven Architecture', 'Consensus Algorithms', 'Distributed Tracing', 'Service Mesh', 'Fault Tolerance', 'High Availability', 'System Design']
+    name: 'Backend & Systems',
+    skills: ['Microservices', 'gRPC', 'REST APIs', 'Event-Driven Architecture', 'Distributed Systems'],
+    color: 'from-purple-500 to-pink-500',
+    bgColor: 'from-purple-500/10 to-pink-500/10'
   },
   {
-    title: 'Infrastructure & DevOps',
-    icon: <FiServer className="text-primary" size={24} />,
-    skills: ['Kubernetes', 'Docker', 'Terraform', 'Chef', 'ArgoCD', 'Istio', 'GitOps', 'CI/CD', 'Prometheus', 'Grafana', 'ELK Stack']
+    name: 'Infrastructure',
+    skills: ['Kubernetes', 'Docker', 'Terraform', 'AWS', 'GCP'],
+    color: 'from-orange-500 to-red-500',
+    bgColor: 'from-orange-500/10 to-red-500/10'
   },
   {
-    title: 'Cloud, Data & ML',
-    icon: <FiCloud className="text-primary" size={24} />,
-    skills: ['AWS', 'GCP', 'Tencent Cloud', 'Kafka', 'RabbitMQ', 'NoSQL Databases (e.g., Redis)', 'PostgreSQL', 'Vault', 'Elasticsearch', 'Apache Spark', 'Data Pipelines', 'MLOps']
+    name: 'Data & Tools',
+    skills: ['PostgreSQL', 'Redis', 'Kafka', 'Elasticsearch'],
+    color: 'from-green-500 to-teal-500',
+    bgColor: 'from-green-500/10 to-teal-500/10'
   }
 ];
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="section-padding">
-      <div className="container mx-auto px-4">
+    <section id="skills" className="section-padding relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="animated-gradient-bg opacity-30" />
+
+      {/* Floating Shapes */}
+      <motion.div
+        className="absolute top-1/4 -right-20 w-80 h-80 border border-indigo-100 dark:border-indigo-900/50 rounded-full opacity-30"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 -left-20 w-60 h-60 border border-purple-100 dark:border-purple-900/50 rounded-full opacity-30"
+        animate={{ rotate: -360 }}
+        transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+      />
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-12 text-center"
+          transition={{ duration: 0.7 }}
+          className="mb-16 text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Skills & Technologies</h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            The technologies, languages, and tools I use to build scalable, resilient distributed systems.
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Technical <span className="gradient-text">Skills</span>
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light">
+            The tools I use to build and understand systems.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {skillCategories.map((category, index) => (
             <motion.div
               key={index}
-              className="card p-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className="glass-card p-8 relative overflow-hidden"
+              initial={{ opacity: 0, y: 50, rotateY: -10 }}
+              whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.7, delay: index * 0.15 }}
+              whileHover={{ scale: 1.02 }}
             >
-              <div className="flex items-center mb-4">
-                {category.icon}
-                <h3 className="text-xl font-bold ml-2">{category.title}</h3>
+              {/* Background Gradient */}
+              <motion.div
+                className={`absolute inset-0 bg-gradient-to-br ${category.bgColor} opacity-0`}
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              />
+
+              {/* Category Header */}
+              <div className="flex items-center gap-4 mb-6 relative z-10">
+                <motion.div
+                  className={`w-1.5 h-10 rounded-full bg-gradient-to-b ${category.color}`}
+                  initial={{ scaleY: 0 }}
+                  whileInView={{ scaleY: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.15 + 0.3 }}
+                  style={{ transformOrigin: 'top' }}
+                />
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white">
+                  {category.name}
+                </h3>
               </div>
-              <div className="flex flex-wrap gap-2">
+
+              {/* Skills Grid */}
+              <div className="flex flex-wrap gap-3 relative z-10">
                 {category.skills.map((skill, i) => (
-                  <span
+                  <motion.span
                     key={i}
-                    className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm"
+                    className="skill-tag"
+                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.4,
+                      delay: index * 0.1 + i * 0.08,
+                      type: "spring",
+                      stiffness: 200
+                    }}
+                    whileHover={{
+                      scale: 1.1,
+                      y: -5,
+                      boxShadow: '0 10px 20px rgba(99, 102, 241, 0.2)'
+                    }}
                   >
                     {skill}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </motion.div>
           ))}
         </div>
+
+        {/* Additional Skills Note */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mt-12"
+        >
+          <motion.p
+            className="text-gray-500 dark:text-gray-500 text-sm"
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          >
+            Currently exploring: Machine Learning, Rust, and understanding how things work at a deeper level.
+          </motion.p>
+        </motion.div>
       </div>
     </section>
   );

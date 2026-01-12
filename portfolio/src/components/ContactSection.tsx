@@ -1,227 +1,216 @@
-import { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiPhone, FiMapPin, FiCode, FiServer, FiCloud, FiLayers, FiCoffee } from 'react-icons/fi';
+import { FiMail, FiMapPin, FiGithub, FiLinkedin, FiTwitter, FiSend, FiCheck } from 'react-icons/fi';
 
 const ContactSection = () => {
-  const [clickedSkills, setClickedSkills] = useState<Record<string, boolean>>({});
-  const [coffeeClicks, setCoffeeClicks] = useState(0);
-  
-  const handleSkillClick = (skillCategory: string) => {
-    setClickedSkills(prev => ({
-      ...prev,
-      [skillCategory]: !prev[skillCategory]
-    }));
-  };
-  
-  const handleCoffeeClick = () => {
-    setCoffeeClicks(prev => prev + 1);
-    if (coffeeClicks === 4) {
-      // Easter egg: After 5 clicks on the coffee icon
-      alert("☕ Need coffee to code? Me too! Here's a virtual coffee for you! ☕");
-      setCoffeeClicks(0);
-    }
-  };
-
   return (
-    <section id="contact" className="section-padding">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="section-padding relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="animated-gradient-bg opacity-40" />
+
+      {/* Floating Elements */}
+      <motion.div
+        className="absolute top-20 left-20 w-3 h-3 bg-indigo-400 rounded-full opacity-60"
+        animate={{ y: [0, -30, 0], scale: [1, 1.5, 1] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-40 right-20 w-4 h-4 bg-purple-400 rounded-full opacity-50"
+        animate={{ y: [0, -25, 0], scale: [1, 1.3, 1] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      />
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-12 text-center"
+          transition={{ duration: 0.7 }}
+          className="mb-16 text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Have a project in mind or want to discuss potential opportunities? Feel free to reach out!
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Let&apos;s <span className="gradient-text">Connect</span>
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light">
+            Looking for Software Engineering opportunities. Open to interesting conversations about
+            systems, philosophy, or anything that makes you think.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-            
-            <div className="space-y-6">
-              <div className="flex items-start">
-                <div className="bg-primary/10 p-3 rounded-full mr-4">
-                  <FiMail className="text-primary" size={24} />
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold mb-1">Email</h4>
-                  <a 
-                    href="mailto:chawlaritik@gmail.com" 
-                    className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Contact Info Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="glass-card p-8"
+              whileHover={{ scale: 1.02 }}
+            >
+              <h3 className="text-2xl font-bold mb-8 text-gray-800 dark:text-white">
+                Get in Touch
+              </h3>
+
+              <div className="space-y-6">
+                <motion.a
+                  href="mailto:chawlaritik@gmail.com"
+                  className="flex items-center gap-4 text-gray-600 dark:text-gray-400 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors group"
+                  whileHover={{ x: 10 }}
+                >
+                  <motion.div
+                    className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center"
+                    whileHover={{ rotate: 10, scale: 1.1 }}
                   >
-                    chawlaritik@gmail.com
-                  </a>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="bg-primary/10 p-3 rounded-full mr-4">
-                  <FiPhone className="text-primary" size={24} />
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold mb-1">Phone</h4>
-                  <a 
-                    href="tel:+91 8743844765" 
-                    className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
-                  >
-                    +91 8743844765
-                  </a>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="bg-primary/10 p-3 rounded-full mr-4">
-                  <FiMapPin className="text-primary" size={24} />
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold mb-1">Location</h4>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    New Delhi, India
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="mt-8">
-              <h4 className="text-lg font-semibold mb-4">Connect with me</h4>
-              <div className="flex space-x-4">
-                <a 
-                  href="https://github.com/ritikchawla" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="bg-gray-200 dark:bg-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors p-3 rounded-full"
-                  aria-label="GitHub"
+                    <FiMail className="text-white" size={20} />
+                  </motion.div>
+                  <div>
+                    <p className="text-sm text-gray-500 dark:text-gray-500">Email</p>
+                    <p className="font-medium gradient-underline">chawlaritik@gmail.com</p>
+                  </div>
+                </motion.a>
+
+                <motion.div
+                  className="flex items-center gap-4 text-gray-600 dark:text-gray-400"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
                 >
-                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 496 512" height="20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
-                </a>
-                <a 
-                  href="https://linkedin.com/in/ritikchawla" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="bg-gray-200 dark:bg-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors p-3 rounded-full"
-                  aria-label="LinkedIn"
-                >
-                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 448 512" height="20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
-                </a>
-                <a 
-                  href="https://x.com/ritikchawla_" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="bg-gray-200 dark:bg-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors p-3 rounded-full"
-                  aria-label="Twitter"
-                >
-                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512" height="20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
-                </a>
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                    <FiMapPin className="text-white" size={20} />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500 dark:text-gray-500">Location</p>
+                    <p className="font-medium">New Delhi, India</p>
+                  </div>
+                </motion.div>
               </div>
-            </div>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="card p-8"
-          >
-            <h3 className="text-2xl font-bold mb-6 flex items-center">
-              Tech Stack Visualization
-              <FiCoffee 
-                className="ml-2 text-gray-400 hover:text-amber-500 cursor-pointer transition-colors" 
-                size={20} 
-                onClick={handleCoffeeClick}
-                title="I run on coffee!"
+
+              {/* Social Links */}
+              <div className="mt-10">
+                <p className="text-sm text-gray-500 dark:text-gray-500 mb-4">Connect on socials</p>
+                <div className="flex gap-4">
+                  {[
+                    { icon: FiGithub, href: "https://github.com/ritikchawla", label: "GitHub" },
+                    { icon: FiLinkedin, href: "https://linkedin.com/in/ritikchawla", label: "LinkedIn" },
+                    { icon: FiTwitter, href: "https://x.com/ritikchawla_", label: "Twitter" }
+                  ].map((social, index) => (
+                    <motion.a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400"
+                      aria-label={social.label}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 + 0.3 }}
+                      whileHover={{
+                        scale: 1.1,
+                        y: -5,
+                        background: 'linear-gradient(135deg, rgb(99, 102, 241), rgb(168, 85, 247))',
+                        color: '#fff'
+                      }}
+                    >
+                      <social.icon size={20} />
+                    </motion.a>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* CTA Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="glass-card p-8 flex flex-col justify-between relative overflow-hidden"
+              whileHover={{ scale: 1.02 }}
+            >
+              {/* Animated Background Shapes */}
+              <motion.div
+                className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-full"
+                animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
+                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
               />
-            </h3>
-            
-            <div className="space-y-6">
-              <div 
-                className={`${clickedSkills['golang'] ? 'transform scale-105' : ''} transition-transform cursor-pointer`}
-                onClick={() => handleSkillClick('golang')}
-              >
-                <div className="flex items-center mb-2">
-                  <FiCode className="text-primary mr-2" size={20} />
-                  <h4 className="text-lg font-semibold">Golang Ecosystem</h4>
-                </div>
-                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full" style={{ width: '95%' }}></div>
-                </div>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">gRPC</span>
-                  <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">Concurrency</span>
-                  <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">Performance</span>
-                </div>
-              </div>
-              
-              <div 
-                className={`${clickedSkills['distributed'] ? 'transform scale-105' : ''} transition-transform cursor-pointer`}
-                onClick={() => handleSkillClick('distributed')}
-              >
-                <div className="flex items-center mb-2">
-                  <FiLayers className="text-primary mr-2" size={20} />
-                  <h4 className="text-lg font-semibold">Distributed Systems</h4>
-                </div>
-                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full" style={{ width: '90%' }}></div>
-                </div>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  <span className="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-xs">Consensus</span>
-                  <span className="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-xs">Fault Tolerance</span>
-                  <span className="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-xs">Scalability</span>
-                </div>
-              </div>
-              
-              <div 
-                className={`${clickedSkills['infra'] ? 'transform scale-105' : ''} transition-transform cursor-pointer`}
-                onClick={() => handleSkillClick('infra')}
-              >
-                <div className="flex items-center mb-2">
-                  <FiServer className="text-primary mr-2" size={20} />
-                  <h4 className="text-lg font-semibold">Infrastructure & DevOps</h4>
-                </div>
-                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-green-500 to-emerald-500 rounded-full" style={{ width: '92%' }}></div>
-                </div>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  <span className="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-xs">Kubernetes</span>
-                  <span className="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-xs">Terraform</span>
-                  <span className="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-xs">GitOps</span>
+
+              <div className="relative z-10">
+                <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">
+                  Open to Opportunities
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                  I&apos;m looking for <span className="text-indigo-500 font-medium">Software Engineering</span> roles
+                  where I can work on challenging problems and make an impact.
+                </p>
+
+                <div className="space-y-3 mb-8">
+                  {[
+                    'Open to relocation',
+                    'Available for full-time roles',
+                    'Remote-friendly'
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      className="flex items-center gap-3 text-gray-600 dark:text-gray-400"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 + 0.4 }}
+                    >
+                      <motion.span
+                        className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center"
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 + 0.5, type: "spring" }}
+                      >
+                        <FiCheck className="text-white" size={12} />
+                      </motion.span>
+                      <span>{item}</span>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
-              
-              <div 
-                className={`${clickedSkills['cloud'] ? 'transform scale-105' : ''} transition-transform cursor-pointer`}
-                onClick={() => handleSkillClick('cloud')}
+
+              <motion.a
+                href="mailto:chawlaritik@gmail.com?subject=Let's Connect - Job Opportunity"
+                className="btn-primary inline-flex items-center justify-center gap-2 w-full relative z-10"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <div className="flex items-center mb-2">
-                  <FiCloud className="text-primary mr-2" size={20} />
-                  <h4 className="text-lg font-semibold">Cloud & Data</h4>
-                </div>
-                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded-full" style={{ width: '88%' }}></div>
-                </div>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  <span className="px-2 py-1 bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 rounded-full text-xs">Kafka</span>
-                  <span className="px-2 py-1 bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 rounded-full text-xs">Redis</span>
-                  <span className="px-2 py-1 bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 rounded-full text-xs">AWS/GCP</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="mt-8 text-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-              <p className="text-xs text-gray-500 dark:text-gray-600">
-                Try clicking on the skill categories and the coffee icon!
-              </p>
-            </div>
+                <FiSend size={18} />
+                Send me a message
+              </motion.a>
+            </motion.div>
+          </div>
+
+          {/* Quote */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="mt-16 text-center"
+          >
+            <motion.p
+              className="text-xl text-gray-500 dark:text-gray-500 font-serif italic max-w-2xl mx-auto"
+              animate={{ opacity: [0.6, 1, 0.6] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              &ldquo;Work is love made visible.&rdquo;
+            </motion.p>
+            <motion.p
+              className="text-indigo-500 dark:text-indigo-400 mt-2"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+            >
+              - Khalil Gibran
+            </motion.p>
           </motion.div>
         </div>
       </div>
