@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { FiArrowDown, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { Link as ScrollLink } from 'react-scroll';
@@ -158,13 +157,11 @@ const HeroSection = () => {
           >
             <div className="profile-image-container">
               <div className="absolute inset-1 rounded-full overflow-hidden z-10">
-                <Image
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src="/pic.jpg"
                   alt="Ritik Chawla"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  priority
-                  className="rounded-full"
+                  className="w-full h-full object-cover rounded-full"
                 />
               </div>
             </div>

@@ -85,23 +85,24 @@
 
   \resumeSubheading
   {GoTo Group (Gojek)}{Aug 2024 -- Present}
-  {Software Engineer 2 -- Engineering Platform}{Gurugram, India}
+  {Software Engineer 2}{Gurugram, India}
   \resumeItemListStart
-    \resumeItem{Built \textbf{automated SSL certificate management} service handling 500+ certificates across VMs, Kubernetes clusters, and load balancers, reducing manual renewal effort by \textbf{90\%}.}
-    \resumeItem{Developed \textbf{Internal Developer Portal} serving 200+ engineers with service discovery, documentation, and infrastructure resource management, improving developer onboarding time by \textbf{40\%}.}
-    \resumeItem{Implemented \textbf{HashiCorp Vault} integrations for secrets management across 50+ services, enabling secure credential rotation and audit logging.}
-    \resumeItem{Built \textbf{AI-powered chatbots} for documentation search and anomaly detection, reducing support ticket volume by \textbf{30\%}.}
-    \resumeItem{Led migration of 15+ services from GCP to Tencent Cloud using \textbf{Terraform}, achieving zero-downtime cutover.}
-    \resumeItem{\textbf{Delivered 2-week DevOps bootcamp} at Jakarta HQ, training 20+ engineers on Linux, Docker, Kubernetes, Terraform, and GitOps.}
+    \resumeItem{Designed \textbf{Internal Developer Portal} backend in Go with service discovery APIs, \textbf{topological sort} for dependency graph resolution, and health aggregation serving \textbf{200+ engineers} with under \textbf{100ms P99 latency}.}
+    \resumeItem{Built \textbf{semantic search system} using OpenAI embeddings stored in vector DB, implementing RAG pipeline with chunking, context retrieval, and re-ranking achieving \textbf{85\% query accuracy} on internal docs.}
+    \resumeItem{Developed \textbf{certificate management service} with async job scheduler using priority queues, exponential backoff retries, and finite state machine tracking 500+ certificates with \textbf{99.9\% renewal success rate}.}
+    \resumeItem{Implemented \textbf{OAuth 2.0/OIDC authentication layer} with JWT validation, RBAC policies, and token introspection, reducing auth-related incidents by \textbf{80\%}.}
+    \resumeItem{Built \textbf{real-time metrics aggregation} service consuming events from Kafka, computing service health scores, and exposing Prometheus endpoints for \textbf{500+ microservices}.}
+    \resumeItem{\textbf{Led 2-week bootcamp} in Jakarta teaching distributed systems, API design patterns, and Go best practices to junior engineers.}
   \resumeItemListEnd
 
   \resumeSubheading
   {MAQ Software}{Jul 2022 -- Aug 2024}
   {Software Engineer}{Noida, India}
   \resumeItemListStart
-    \resumeItem{Built data ingestion pipelines processing \textbf{500K+ records daily} from REST/GraphQL APIs into SQL Server and Azure Data Lake.}
-    \resumeItem{Implemented \textbf{Redis} caching layer reducing average API response time from 800ms to \textbf{240ms (70\% improvement)}.}
-    \resumeItem{Designed ETL workflows using \textbf{Databricks} and PySpark, cutting data processing time by \textbf{50\%}.}
+    \resumeItem{Built \textbf{data ingestion service} processing \textbf{500K+ records/day} with producer-consumer architecture, concurrent workers with semaphore-based rate limiting, and circuit breakers for fault tolerance.}
+    \resumeItem{Designed \textbf{multi-tier caching} (Redis L1 + local L2) with cache-aside pattern and TTL invalidation.}
+    \resumeItem{Developed \textbf{ETL pipeline} with PySpark processing 10TB+ datasets, using broadcast joins for dimension tables and partition pruning for \textbf{50\% faster} query execution.}
+    \resumeItem{Optimized \textbf{slow SQL queries} by analyzing execution plans, adding composite indexes, and rewriting N+1 queries with batch fetching, reducing P95 latency by \textbf{70\%}.}
   \resumeItemListEnd
 
   \resumeSubHeadingListEnd
@@ -111,8 +112,8 @@
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
      \textbf{Languages}{: Golang, Python, C++, SQL} \\
-     \textbf{Backend}{: Microservices, gRPC, REST APIs, Event-Driven Architecture, Distributed Systems} \\
-     \textbf{Infrastructure}{: Kubernetes, Docker, Terraform, Vault, AWS, GCP, Kafka, Redis, PostgreSQL}
+     \textbf{Core}{: Data Structures, Algorithms, System Design, Distributed Systems, Concurrency} \\
+     \textbf{Technologies}{: PostgreSQL, Redis, Kafka, gRPC, REST APIs, Docker, Kubernetes, AWS, GCP, Vault}
     }}
  \end{itemize}
 
@@ -123,22 +124,22 @@
 \resumeProjectHeading
 {\textbf{\href{https://github.com/ritikchawla/minidb}{MiniDB: SQL Database Engine}} $|$ \footnotesize\emph{Golang}}{}
 \resumeItemListStart
-  \resumeItem{Built SQL database from scratch with \textbf{B+ tree} storage engine achieving O(log n) lookups and efficient range queries.}
-  \resumeItem{Implemented \textbf{MVCC transactions} with snapshot isolation for safe concurrent read/write operations.}
+  \resumeItem{Built SQL database with \textbf{B+ tree index} (O(log n) lookups), custom query parser using recursive descent, and WAL for crash recovery.}
+  \resumeItem{Implemented \textbf{MVCC} with snapshot isolation, deadlock detection via wait-for graph cycle detection, and optimistic concurrency for read-heavy workloads.}
 \resumeItemListEnd
 
 \resumeProjectHeading
-{\textbf{\href{https://github.com/ritikchawla/dns-server}{DNS Server from Scratch}} $|$ \footnotesize\emph{Golang}}{}
+{\textbf{\href{https://github.com/ritikchawla/dns-server}{DNS Resolver}} $|$ \footnotesize\emph{Golang}}{}
 \resumeItemListStart
-  \resumeItem{Built recursive DNS resolver implementing \textbf{RFC 1035} with A, AAAA, CNAME, MX record support.}
-  \resumeItem{Added response caching with TTL expiration and concurrent query handling via goroutines.}
+  \resumeItem{Built \textbf{recursive DNS resolver} implementing RFC 1035 protocol parsing, iterative resolution, and concurrent query handling with goroutines.}
+  \resumeItem{Implemented \textbf{LRU cache} with TTL expiration for response caching, reducing average resolution time by 60\% for repeated queries.}
 \resumeItemListEnd
 
 \resumeProjectHeading
-{\textbf{\href{https://github.com/ritikchawla/kube-secrets-sync}{Kubernetes Secrets Controller}} $|$ \footnotesize\emph{Golang, Kubernetes, Vault}}{}
+{\textbf{\href{https://github.com/ritikchawla/distributed-task-queue}{Distributed Task Queue}} $|$ \footnotesize\emph{Golang, Redis}}{}
 \resumeItemListStart
-  \resumeItem{Built K8s controller syncing secrets from \textbf{HashiCorp Vault} with custom CRD and reconciliation loop.}
-  \resumeItem{Implemented secret rotation, TTL-based refresh, and automatic workload restarts on changes.}
+  \resumeItem{Built distributed task queue with \textbf{Redis-backed persistence}, supporting delayed tasks, retries with exponential backoff, and dead-letter queues.}
+  \resumeItem{Implemented \textbf{worker pool} with configurable concurrency, task prioritization using sorted sets, and exactly-once execution guarantees.}
 \resumeItemListEnd
 
   \resumeSubHeadingListEnd
