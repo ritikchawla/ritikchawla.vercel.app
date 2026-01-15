@@ -16,30 +16,30 @@ interface Project {
 const projects: Project[] = [
   {
     title: 'MiniDB: SQL Database Engine',
-    description: 'A SQL database built from scratch',
-    longDescription: 'A complete SQL database implementation featuring a B+ tree storage engine for efficient range queries and O(log n) lookups. Includes a SQL parser supporting CRUD operations with WHERE clauses and JOINs, plus MVCC-based transactions with snapshot isolation.',
-    technologies: ['Golang', 'B+ Tree', 'SQL Parser', 'MVCC', 'WAL'],
+    description: 'A SQL database built from scratch with MVCC & crash recovery',
+    longDescription: 'Built a SQL database with B+ tree index (O(log n) lookups), custom query parser using recursive descent, and WAL for crash recovery. Implemented MVCC with snapshot isolation, deadlock detection via wait-for graph cycle detection, and optimistic concurrency for read-heavy workloads.',
+    technologies: ['Golang', 'B+ Tree', 'MVCC', 'WAL', 'Deadlock Detection'],
     githubUrl: 'https://github.com/ritikchawla/minidb',
-    status: 'in-progress',
+    status: 'completed',
     icon: '🗄️'
   },
   {
-    title: 'DNS Server from Scratch',
-    description: 'A recursive DNS resolver implementing RFC 1035',
-    longDescription: 'Built a recursive DNS resolver that implements the DNS protocol from the ground up. Features iterative resolution starting from root nameservers, response caching with TTL-based expiration, and concurrent query handling.',
-    technologies: ['Golang', 'RFC 1035', 'UDP', 'Caching', 'Concurrency'],
+    title: 'DNS Resolver',
+    description: 'Recursive DNS resolver with LRU caching',
+    longDescription: 'Built recursive DNS resolver implementing RFC 1035 protocol parsing, iterative resolution, and concurrent query handling with goroutines. Implemented LRU cache with TTL expiration for response caching, reducing average resolution time by 60% for repeated queries.',
+    technologies: ['Golang', 'RFC 1035', 'UDP', 'LRU Cache', 'Goroutines'],
     githubUrl: 'https://github.com/ritikchawla/dns-server',
-    status: 'in-progress',
+    status: 'completed',
     icon: '🌐'
   },
   {
-    title: 'Kubernetes Secrets Controller',
-    description: 'K8s controller that syncs secrets from HashiCorp Vault',
-    longDescription: 'A Kubernetes controller that automatically syncs secrets from HashiCorp Vault to Kubernetes Secrets. Features custom CRD with reconciliation loop, secret rotation, and automatic workload restarts.',
-    technologies: ['Golang', 'Kubernetes', 'Vault', 'CRD'],
-    githubUrl: 'https://github.com/ritikchawla/kube-secrets-sync',
-    status: 'planned',
-    icon: '🔐'
+    title: 'Distributed Task Queue',
+    description: 'Redis-backed task queue with exactly-once semantics',
+    longDescription: 'Built distributed task queue with Redis-backed persistence, supporting delayed tasks, retries with exponential backoff, and dead-letter queues. Implemented worker pool with configurable concurrency, task prioritization using sorted sets, and exactly-once execution guarantees.',
+    technologies: ['Golang', 'Redis', 'Worker Pool', 'Exponential Backoff'],
+    githubUrl: 'https://github.com/ritikchawla/distributed-task-queue',
+    status: 'completed',
+    icon: '⚡'
   }
 ];
 
